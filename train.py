@@ -6,13 +6,14 @@ from pytorch_lightning import seed_everything
 
 from idao.data_module import IDAODataModule
 from idao.model import SimpleConv
+from idao.new_model import ConvNN
 
 seed_everything(666)
 
 
 def trainer(mode: ["classification", "regression"], cfg):
     # init model
-    model = SimpleConv(mode=mode)
+    model = ConvNN(mode=mode)
     if mode == "classification":
         epochs = cfg["TRAINING"]["ClassificationEpochs"]
     else:

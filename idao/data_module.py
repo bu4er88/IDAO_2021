@@ -19,8 +19,9 @@ class IDAODataModule(pl.LightningDataModule):
                     root = self.data_dir.joinpath("train"),
                     loader = img_loader,
                     transform=transforms.Compose(
-                        [transforms.ToTensor(), transforms.CenterCrop(120)]
+                        [transforms.ToTensor(),]
                     ),
+                    #transforms.CenterCrop(120)
                     target_transform=transforms.Compose(
                         [
                             lambda num: (
@@ -34,14 +35,14 @@ class IDAODataModule(pl.LightningDataModule):
                     main_dir=self.data_dir.joinpath("public_test"),
                     loader=img_loader,
                     transform=transforms.Compose(
-                        [transforms.ToTensor(), transforms.CenterCrop(120)]
+                        [transforms.ToTensor(), ]
                     ),
                 )
         self.private_dataset = InferenceDataset(
                     main_dir=self.data_dir.joinpath("private_test"),
                     loader=img_loader,
                     transform=transforms.Compose(
-                        [transforms.ToTensor(), transforms.CenterCrop(120)]
+                        [transforms.ToTensor(), ]
                     ),
                 )
 
